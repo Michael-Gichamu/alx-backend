@@ -56,8 +56,8 @@ class Server:
         Returns:
             List[List]: List of items of the appropriate page of the dataset.
         """
-        assert page > 0 or page_size > 0
-        assert isinstance(page, int) and isinstance(page_size, int)
+        assert isinstance(page, int) and page > 0
+        assert isinstance(page_size, int) and page_size > 0
         start_idx, end_idx = index_range(page, page_size)
         dataset = self.dataset()
         if start_idx > len(dataset) or end_idx > len(dataset):
