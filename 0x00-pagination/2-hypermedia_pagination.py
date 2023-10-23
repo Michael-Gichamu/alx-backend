@@ -77,7 +77,7 @@ class Server:
         data = self.get_page(page, page_size)
         dataset = self.dataset()
         start_idx, end_idx = index_range(page, page_size)
-        print(len(data))
+
         if page == 1:
             prev_page = None
         else:
