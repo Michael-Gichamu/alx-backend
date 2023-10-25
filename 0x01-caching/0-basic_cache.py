@@ -28,7 +28,6 @@ class BasicCache(BaseCaching):
     def get(self, key):
         """
         Get Value
-
         Args:
             key (any): key.
 
