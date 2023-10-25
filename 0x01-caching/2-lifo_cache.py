@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Contains Class FIFOCache"""
+"""Contains Class LIFOCache"""
 BaseCaching = __import__('base_caching').BaseCaching
 
 
@@ -21,7 +21,7 @@ class LIFOCache(BaseCaching):
     def put(self, key, item):
         """
         Insert an item to cache storage
-        Discard first item if cache is full.
+        Discard last item if cache is full.
 
         Args:
             key (any): key.
