@@ -40,6 +40,15 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
+        """
+        Create Hypermedia Metadata with indexes.
+        Args:
+            index (int, optional): index. Defaults to None.
+            page_size (int, optional): Items per Page. Defaults to 10.
+
+        Returns:
+            Dict: Dictionary containing data and metadata.
+        """
         if not (0 <= index < len(self.indexed_dataset())):
             raise AssertionError("Index out of range")
 
