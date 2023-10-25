@@ -22,7 +22,7 @@ class BasicCache(BaseCaching):
             key (any): key.
             item (any): value.
         """
-        if key or item is not None:
+        if key and item:
             self.cache_data[key] = item
 
     def get(self, key):
@@ -34,7 +34,7 @@ class BasicCache(BaseCaching):
         Returns:
             Value of the key from cache storage.
         """
-        if key in self.cache_data or self.cache_data[key] is not None:
+        if key in self.cache_data and self.cache_data[key] is not None:
             return self.cache_data[key]
         else:
             return None
