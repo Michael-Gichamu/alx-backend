@@ -22,7 +22,7 @@ class BasicCache(BaseCaching):
             key (any): key.
             item (any): value.
         """
-        if key and item:
+        if key or item is not None:
             self.cache_data[key] = item
 
     def get(self, key):
