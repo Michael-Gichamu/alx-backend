@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-"""Contains Class FIFOCache"""
+"""Contains Class LIFOCache"""
 BaseCaching = __import__('base_caching').BaseCaching
 
 
-class FIFOCache(BaseCaching):
+class LIFOCache(BaseCaching):
     """
     Cache replacement Policy:
-    FIFO Algorithm
+    LIFO Algorithm
 
     Args:
         BaseCaching (Class): Parent Class: Caching System.
@@ -16,11 +16,12 @@ class FIFOCache(BaseCaching):
         Initialize Parent Class.
         """
         super().__init__()
+        self.last_key = ''
 
     def put(self, key, item):
         """
         Insert an item to cache storage
-        Discard first item if cache is full.
+        Discard last item if cache is full.
 
         Args:
             key (any): key.
@@ -29,9 +30,10 @@ class FIFOCache(BaseCaching):
         if key and item:
             self.cache_data[key] = item
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-                first_key = next(iter(self.cache_data))
-                self.cache_data.pop(first_key)
-                print(f"DISCARD: {first_key}")
+                print(self.last_key)
+                print("DISCARD: {}".format(self.last_key))
+                self.cache_data.pop(self.last_key)
+            self.last_key = key
 
     def get(self, key):
         """
